@@ -1,41 +1,205 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding-bottom: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1a1a2e 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Add texture overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(120, 119, 198, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, rgba(49, 46, 219, 0.2) 0%, rgba(106, 90, 205, 0.2) 100%);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    margin-bottom: 40px;
+}
+
 .title {
     text-align: center;
     margin-top: 30px;
-    font-size: 30px;
+    font-size: 48px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #00d4ff 0%, #6a5acd 50%, #ff006e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(106, 90, 205, 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
 }
 
-body {
-    font-family: 'Segoe UI';
-    text-align: center;
-    color: white;
-    background-color: #121212;
+@keyframes glow {
+    from { filter: drop-shadow(0 0 20px rgba(106, 90, 205, 0.5)); }
+    to { filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.5)); }
 }
 
 .title2 {
     text-align: center;
     margin-top: 20px;
-    font-size: 30px;
+    font-size: 32px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ffffff 0%, #b8b8ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
+/* Main Content Sections */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(106, 90, 205, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px 30px;
+    margin: 30px 0;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+section h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #a0a0ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+section h3 {
+    font-size: 20px;
+    color: #e0e0ff;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+section p {
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+}
+
+/* Button Styles */
 button {
-    background: linear-gradient(90deg, #312edb, #6a5acd);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #312edb 0%, #6a5acd 50%, #8a2be2 100%);
+    border-radius: 15px;
+    box-shadow: 
+        0 8px 16px rgba(49, 46, 219, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 18px 36px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 15px 10px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-body {
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 12px 20px rgba(49, 46, 219, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Links */
+a {
+    color: #00d4ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+/* Footer Styles */
+footer {
+    margin-top: 60px;
+}
+
+.privacy-link {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(106, 90, 205, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 600px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.privacy-link p {
     margin: 0;
-    padding-bottom: 50px;
-    font-family: sans-serif;
+    display: inline;
 }
 
 .bottom-ribbon {
@@ -43,10 +207,34 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #222;
-    color: #fff;
+    background: linear-gradient(135deg, rgba(34, 34, 34, 0.95) 0%, rgba(26, 26, 46, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
     text-align: center;
-    padding: 10px 0;
-    font-size: 16px;
+    padding: 15px 0;
+    font-size: 14px;
     z-index: 1000;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .title {
+        font-size: 36px;
+    }
+    
+    .title2 {
+        font-size: 24px;
+    }
+    
+    section {
+        padding: 30px 20px;
+        margin: 20px 10px;
+    }
+    
+    button {
+        padding: 15px 30px;
+        font-size: 16px;
+    }
 }
